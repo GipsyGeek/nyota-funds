@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap');
+
+/* ─── Variables ─────────────────────────────────────── */
+:root {
+  --green: #16a34a;
+  --green-light: #22c55e;
+  --green-bg: #f0fdf4;
+  --green-border: #bbf7d0;
+  --dark: #0f172a;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --yellow: #fef3c7;
+  --yellow-border: #fde68a;
+  --blue: #eff6ff;
+  --blue-border: #bfdbfe;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text);
+  background: #f8fafc;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+.nyota-bg { background: var(--green-bg); min-height: 100vh; }
+.min-h-screen { min-height: 100vh; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+
+/* ─── Header ─────────────────────────────────────────── */
+.nyota-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nyota-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+.nyota-logo span { color: var(--green); }
+.nyota-logo.center { text-align: center; display: block; margin-bottom: 1rem; }
+
+.admin-link {
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+.admin-link:hover { background: var(--border); }
+
+/* ─── Stepper ────────────────────────────────────────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 0.5rem;
+  flex-wrap: nowrap;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  color: var(--muted);
+  font-weight: 500;
+}
+.step.active { color: var(--green); }
+.step.done { color: var(--green); }
+.step-circle {
+  width: clamp(30px, 6vw, 38px);
+  height: clamp(30px, 6vw, 38px);
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+}
+.step-circle.active { background: var(--green); color: white; }
+.step-circle.done { background: var(--green); color: white; }
+.step-line {
+  width: clamp(30px, 8vw, 60px);
+  height: 2px;
+  background: var(--border);
+  margin-bottom: 1.4rem;
+  flex-shrink: 0;
+}
+.step-line.active { background: var(--green); }
+
+/* ─── Card ───────────────────────────────────────────── */
+.nyota-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 540px;
+  margin: 1.5rem auto 2rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+}
+.nyota-card.wide { max-width: 880px; }
+.nyota-card.narrow { max-width: 360px; }
+
+.card-badge {
+  display: inline-block;
+  background: var(--green-bg);
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--green-border);
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+.card-sub { color: var(--muted); margin-bottom: 1.5rem; font-size: clamp(0.85rem, 2vw, 1rem); }
+
+/* ─── Form ───────────────────────────────────────────── */
+.form-group { margin-bottom: 1.1rem; }
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+.nyota-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-family: inherit;
+  color: var(--text);
+  background: #f8fafc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.nyota-input:focus { border-color: var(--green); background: white; }
+.nyota-input.sm { max-width: 220px; }
+select.nyota-input { appearance: none; cursor: pointer; }
+.error-msg { color: #ef4444; font-size: 0.85rem; margin: 0.5rem 0; font-weight: 500; }
+
+/* ─── Button ─────────────────────────────────────────── */
+.nyota-btn {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  background: var(--green);
+  color: white;
+  font-family: inherit;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 0.5rem;
+}
+.nyota-btn:hover:not(:disabled) { background: #15803d; transform: translateY(-1px); }
+.nyota-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.nyota-btn.outline {
+  background: white;
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+.nyota-btn.outline:hover { background: var(--green-bg); }
+.mt-4 { margin-top: 1rem; }
+.mt-2 { margin-top: 0.5rem; }
+
+.btn-row { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.btn-row .nyota-btn { flex: 1; min-width: 120px; }
+
+.btn-spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ─── Trust Row ──────────────────────────────────────── */
+.trust-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  font-size: clamp(0.72rem, 2vw, 0.8rem);
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+/* ─── Loan Grid ──────────────────────────────────────── */
+.loan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(130px, 20vw, 170px), 1fr));
+  gap: 0.65rem;
+  margin: 1.5rem 0;
+}
+.loan-tile {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(0.65rem, 2vw, 1rem);
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  background: white;
+}
+.loan-tile:hover { border-color: var(--green-light); background: var(--green-bg); }
+.loan-tile.selected { border-color: var(--green); background: var(--green-bg); }
+.check-badge {
+  position: absolute;
+  top: 6px; right: 6px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem;
+}
+.tile-amount { font-weight: 700; font-size: clamp(0.85rem, 2vw, 1rem); color: var(--dark); }
+.tile-fee { font-size: clamp(0.72rem, 1.5vw, 0.8rem); color: var(--muted); margin-top: 0.2rem; }
+
+/* ─── Selected Summary ───────────────────────────────── */
+.selected-summary {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+.summary-amount {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  color: var(--dark);
+}
+.summary-fee { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+.fee-green { color: var(--green); font-weight: 600; }
+.mpesa-hint { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 0.75rem; }
+
+/* ─── Payment Status ─────────────────────────────────── */
+.status-block { text-align: center; }
+.success-icon {
+  width: 64px; height: 64px;
+  background: var(--green-bg);
+  color: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1rem;
+  border: 2px solid var(--green-border);
+}
+.success-icon.big { width: 80px; height: 80px; font-size: 2.2rem; }
+.fail-icon {
+  width: 64px; height: 64px;
+  background: #fef2f2;
+  color: #ef4444;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1rem;
+  border: 2px solid #fecaca;
+}
+.spinner {
+  width: 48px; height: 48px;
+  border: 4px solid var(--green-border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.summary-box {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  text-align: left;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: clamp(0.82rem, 2vw, 0.9rem);
+  border-bottom: 1px solid var(--border);
+  gap: 0.5rem;
+}
+.summary-row:last-child { border: none; }
+.summary-row span { color: var(--muted); }
+
+.info-card {
+  display: flex;
+  gap: 0.75rem;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0.75rem 0;
+  text-align: left;
+}
+.info-card.yellow { background: var(--yellow); border: 1px solid var(--yellow-border); }
+.info-card.blue { background: var(--blue); border: 1px solid var(--blue-border); }
+.info-card strong { display: block; font-size: clamp(0.82rem, 2vw, 0.9rem); margin-bottom: 0.2rem; }
+.info-card p { font-size: clamp(0.75rem, 1.8vw, 0.82rem); color: var(--muted); }
+.info-icon { font-size: 1.1rem; flex-shrink: 0; padding-top: 0.1rem; }
+
+/* ─── Testimonials ───────────────────────────────────── */
+.testimonials {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+.testimonials h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+.testi-sub { text-align: center; color: var(--muted); margin-bottom: 1.5rem; font-size: clamp(0.82rem, 2vw, 1rem); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 1rem;
+}
+.testi-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: clamp(1rem, 3vw, 1.25rem);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.testi-avatar {
+  width: 42px; height: 42px;
+  background: var(--green-bg);
+  color: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.testi-name { font-weight: 700; font-size: 0.95rem; }
+.testi-loc { font-size: 0.8rem; color: var(--muted); }
+.testi-text { font-size: clamp(0.8rem, 2vw, 0.88rem); color: var(--text); line-height: 1.5; }
+
+/* ─── Footer ─────────────────────────────────────────── */
+.nyota-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(0.78rem, 2vw, 0.85rem);
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+.nyota-footer .copyright { font-size: 0.75rem; }
+
+/* ─── Admin ──────────────────────────────────────────── */
+.admin-layout { display: flex; min-height: 100vh; }
+.admin-sidebar {
+  width: clamp(60px, 15vw, 220px);
+  background: var(--dark);
+  padding: 1.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.admin-sidebar .nyota-logo { color: white; margin-bottom: 1.5rem; font-size: clamp(0.85rem, 2vw, 1.2rem); }
+.admin-nav { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
+.nav-item {
+  background: none; border: none;
+  color: #94a3b8;
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav-item:hover { background: rgba(255,255,255,0.07); color: white; }
+.nav-item.active { background: var(--green); color: white; }
+.nav-item.logout { color: #64748b; margin-top: auto; }
+
+.admin-main { flex: 1; padding: clamp(1rem, 3vw, 2rem); background: #f8fafc; overflow-x: auto; min-width: 0; }
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.admin-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 800; }
+.admin-search-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 160px), 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.stat-card { background: white; border-radius: 12px; padding: 1rem; box-shadow: var(--shadow); }
+.stat-label { font-size: clamp(0.7rem, 1.5vw, 0.78rem); color: var(--muted); font-weight: 500; margin-bottom: 0.4rem; }
+.stat-value { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 800; color: var(--dark); }
+.stat-value.green { color: var(--green); }
+.stat-value.yellow { color: #f59e0b; }
+
+.admin-table-wrap { background: white; border-radius: 12px; box-shadow: var(--shadow); overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+.admin-table th {
+  background: #f1f5f9;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.admin-table td { padding: 0.75rem; border-top: 1px solid var(--border); }
+.admin-table tr:hover td { background: #f8fafc; }
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+.mini-select {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: white;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ─── Responsive breakpoints ─────────────────────────── */
+@media (max-width: 600px) {
+  .nyota-card { margin: 1rem 0.75rem; }
+  .nyota-card.wide { margin: 1rem 0.75rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .btn-row { flex-direction: column; }
+  .btn-row .nyota-btn { width: 100%; }
+  .trust-row { gap: 0.5rem; }
+  .admin-sidebar { width: 48px; padding: 1rem 0.25rem; }
+  .admin-sidebar .nyota-logo { display: none; }
+  .nav-item { padding: 0.65rem 0.5rem; font-size: 0; }
+  .admin-search-row { width: 100%; }
+  .admin-search-row .nyota-input { width: 100%; max-width: 100%; }
+}
+
+@media (max-width: 400px) {
+  .stepper { padding: 1rem 0.5rem 0.5rem; }
+  .step-line { width: 20px; }
+  .loan-grid { grid-template-columns: repeat(2, 1fr); }
+}
